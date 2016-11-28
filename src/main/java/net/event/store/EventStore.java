@@ -13,13 +13,25 @@ public class EventStore {
 	}
 
 	public EventRef updateEventStatus(long eventId, boolean disable) {
-		// Check if the event is not delivered completely (archived) then
-		// disable else do nothing and return the status
+		// Check the event status. Disable if it is not delivered completely (archived)
+		// else do nothing and return the status
 		return null; // TODO
 	}
 
 	public EventRef getEventReport(long eventId) {
 		return null; // TODO
 	}
+	
+	public Event getHighestPriorityEvent(){
+		
+		
+		return null;
+	}
+	
+	public void addEventLog(long eventId, String logEntry){
+		// TODO add event log to DB
+		
+	}
+	
 
 }
