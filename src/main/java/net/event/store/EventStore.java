@@ -1,11 +1,18 @@
 package net.event.store;
 
+import java.util.concurrent.BlockingQueue;
+
 import net.event.Event;
 import net.event.EventRef;
 
+/**
+ * @author test
+ *
+ */
 public class EventStore {
 
 	private EventStoreDAO dao;
+	private BlockingQueue<Event> eventQ;
 
 	public long addNewEvent(Event event) {
 
@@ -22,10 +29,15 @@ public class EventStore {
 		return null; // TODO
 	}
 	
-	public Event getHighestPriorityEvent(){
-		
-		
-		return null;
+	
+	/**
+	 * Returns the highest priority Explicitly locks the record in DB for editing.
+	 * 
+	 * @return
+	 * @throws InterruptedException 
+	 */
+	public Event readEvent() throws InterruptedException{
+		return eventQ.take();
 	}
 	
 	public void addEventLog(long eventId, String logEntry){
