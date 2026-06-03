@@ -1,0 +1,6 @@
+target/*
+!target/notification-service.war
+.git
+.mvn
+*.pptx
+*.vsd

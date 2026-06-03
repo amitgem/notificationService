@@ -8,6 +8,10 @@
 	<name>Notification Service</name>
 	<url>http://maven.apache.org</url>
 
+	<properties>
+		<docker.image.name>notification-service</docker.image.name>
+	</properties>
+
 	<repositories>
 		<repository>
 			<id>maven2-repository.java.net</id>
@@ -86,6 +90,44 @@
 	<build>
 		<finalName>notification-service</finalName>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>docker</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>io.fabric8</groupId>
+						<artifactId>docker-maven-plugin</artifactId>
+						<version>0.45.1</version>
+						<executions>
+							<execution>
+								<id>docker-build</id>
+								<phase>package</phase>
+								<goals>
+									<goal>build</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<images>
+								<image>
+									<name>${docker.image.name}:${project.version}</name>
+									<build>
+										<contextDir>${project.basedir}</contextDir>
+										<dockerFile>${project.basedir}/Dockerfile</dockerFile>
+										<args>
+											<WAR_FILE>target/${project.build.finalName}.war</WAR_FILE>
+										</args>
+									</build>
+								</image>
+							</images>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
 
 </project>

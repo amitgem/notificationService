@@ -34,6 +34,21 @@ include `X-Client-Id` and `X-API-Key` headers. Authenticated producer requests
 can create and update events under `/api/event`.
 
 
+Docker
+======
+Build the WAR and Docker image:
+
+`./mvnw -Pdocker package`
+
+The Maven `docker` profile builds a Tomcat-based image named
+`notification-service:1.0-SNAPSHOT`. Run it with:
+
+`docker run --rm -p 8080:8080 notification-service:1.0-SNAPSHOT`
+
+The service is deployed as the Tomcat root web application, so the REST API is
+available under `http://localhost:8080/api/...`.
+
+
 Technology limitations
 =======================
 - Use Java. 
