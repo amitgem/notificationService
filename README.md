@@ -21,6 +21,19 @@ Any integrated application/system should be able to post an event for distributi
 Events should be targeted both to individual users or to groups or roles. 
 
 
+Authentication
+==============
+The REST API is protected by an API-key authentication filter. Configure
+producer clients with the `notification.api.keys` system property or the
+`NOTIFICATION_API_KEYS` environment variable:
+
+`clientId:apiKey[:role1,role2];anotherClient:anotherKey`
+
+When roles are omitted, the client is granted `EVENT_PRODUCER`. Requests must
+include `X-Client-Id` and `X-API-Key` headers. Authenticated producer requests
+can create and update events under `/api/event`.
+
+
 Technology limitations
 =======================
 - Use Java. 
