@@ -4,9 +4,9 @@ Any integrated application/system should be able to post an event for distributi
 
 Events should be targeted both to individual users or to groups or roles. 
 
-Universal notification service uses the events for creation and distribution of alerts, notifications, warnings, confirmations, simple approval requests etc. 
+Universal notification service uses the events for creation and distribution of notifications (alerts, warnings, confirmations, simple approval requests etc.). 
 
-Multi channel - the events should be distributed using multiple channels - through any of integrated services' web UIs, email, company instant messenger, SMS etc. 
+Multi channel - the notifications should be distributed using multiple channels - through any of integrated services' web UIs, email, company instant messenger, SMS etc. 
 
 Authentication
 ==============
