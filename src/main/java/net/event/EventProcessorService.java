@@ -15,16 +15,17 @@ import net.event.store.EventStore;
 public class EventProcessorService implements Runnable {
 
 	private final ExecutorService pool;
-	private EventStore store;
+	private final EventStore store;
 	
 	public EventProcessorService(int poolSize) throws IOException {
 		pool = Executors.newFixedThreadPool(poolSize);
+		store = new EventStore();
 	}
 
 	public void run() { // run the service
 		try {
 			for (;;) {
-				pool.execute(new EventProcessor(store.readEvent()));
+				pool.execute(new EventProcessor(store, store.readEvent()));
 			}
 		} catch (InterruptedException ex) {
 			shutdown();

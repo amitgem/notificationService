@@ -1,6 +1,7 @@
 package net.event;
 
 public class Event {
+	private long eventId;
 	private String eventType;
 	private String source;
 	private Priority priority;
@@ -8,6 +9,12 @@ public class Event {
 	private String destination;
 	private long expireInMinutes;
 	
+	public long getEventId() {
+		return eventId;
+	}
+	public void setEventId(long eventId) {
+		this.eventId = eventId;
+	}
 	
 	public String getEventType() {
 		return eventType;

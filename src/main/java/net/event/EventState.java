@@ -2,7 +2,8 @@ package net.event;
 
 public enum EventState {
 	NEW,
-	UNDER_PROCESS,
+	PUBLISHING,
+	PARTIALLY_PUBLISHED,
 	DISABLED,
 	ARCHIVED
 }
